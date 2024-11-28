@@ -1,0 +1,9 @@
+{
+	"name": "lauri-datafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3677bf11-6c01-4a22-815e-f714851ac1f5",
+		"tenantId": "fc9d94f8-cb8e-4ee0-a294-a7c6ff3720f8"
+	}
+}
