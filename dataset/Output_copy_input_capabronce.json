@@ -1,0 +1,32 @@
+{
+	"name": "Output_copy_input_capabronce",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataFactory_ADLS_Gen_2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"nombrearchivo": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().nombrearchivo",
+					"type": "Expression"
+				},
+				"folderPath": "proyectofinal/capabronce",
+				"fileSystem": "lauricontenedor"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
