@@ -1,0 +1,73 @@
+{
+	"name": "ejecutar todo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Ejecuta_copy_input_bronce",
+				"description": "De input a bronce",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "copy_input_bronce",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Ejecuta_capabronce_capaplata",
+				"description": "Ejecuta de la capabonce a la capa plata",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Ejecuta_copy_input_bronce",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "capabronce_capaplata",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Ejecuta_capaplata_capaoro",
+				"description": "Ejecuta la capaplata a la capaoro",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Ejecuta_capabronce_capaplata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "capaplata_capaoro",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
