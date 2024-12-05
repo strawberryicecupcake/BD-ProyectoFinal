@@ -23,14 +23,7 @@
 				"name": "Ejecuta_capabronce_capaplata",
 				"description": "Ejecuta de la capabonce a la capa plata",
 				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "Ejecuta_copy_input_bronce",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"secureInput": false
 				},
@@ -47,14 +40,7 @@
 				"name": "Ejecuta_capaplata_capaoro",
 				"description": "Ejecuta la capaplata a la capaoro",
 				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "Ejecuta_capabronce_capaplata",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"secureInput": false
 				},
