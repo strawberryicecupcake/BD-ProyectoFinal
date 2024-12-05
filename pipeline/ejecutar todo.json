@@ -23,7 +23,14 @@
 				"name": "Ejecuta_capabronce_capaplata",
 				"description": "Ejecuta de la capabonce a la capa plata",
 				"type": "ExecutePipeline",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Ejecuta_copy_input_bronce",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureInput": false
 				},
