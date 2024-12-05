@@ -47,7 +47,14 @@
 				"name": "Ejecuta_capaplata_capaoro",
 				"description": "Ejecuta la capaplata a la capaoro",
 				"type": "ExecutePipeline",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Ejecuta_capabronce_capaplata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureInput": false
 				},
