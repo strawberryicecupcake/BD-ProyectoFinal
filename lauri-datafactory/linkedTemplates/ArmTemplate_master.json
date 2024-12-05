@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nombre de instancia de Data Factory",
+			"defaultValue": "lauri-datafactory"
+		},
+		"DataFactory_ADLS_Gen_2_accountKey": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accountKey\"de \"DataFactory_ADLS_Gen_2\""
+		},
+		"DataFactory_Databricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accessToken\"de \"DataFactory_Databricks\""
+		},
+		"DataFactory_ADLS_Gen_2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://laurialmacenamiento.dfs.core.windows.net/"
+		},
+		"DataFactory_Databricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1204-235329-z9bav5l8"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI de la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas."
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Token de SAS para la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "lauri-datafactory_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"DataFactory_ADLS_Gen_2_accountKey": {
+						"value": "[parameters('DataFactory_ADLS_Gen_2_accountKey')]"
+					},
+					"DataFactory_Databricks_accessToken": {
+						"value": "[parameters('DataFactory_Databricks_accessToken')]"
+					},
+					"DataFactory_ADLS_Gen_2_properties_typeProperties_url": {
+						"value": "[parameters('DataFactory_ADLS_Gen_2_properties_typeProperties_url')]"
+					},
+					"DataFactory_Databricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('DataFactory_Databricks_properties_typeProperties_existingClusterId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
