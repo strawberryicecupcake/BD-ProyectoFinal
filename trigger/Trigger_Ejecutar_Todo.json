@@ -16,7 +16,7 @@
 		"typeProperties": {
 			"recurrence": {
 				"frequency": "Minute",
-				"interval": 30,
+				"interval": 10,
 				"startTime": "2024-12-06T00:00:00",
 				"endTime": "2024-12-11T06:23:00",
 				"timeZone": "SA Pacific Standard Time"
